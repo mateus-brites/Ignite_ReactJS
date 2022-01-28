@@ -1,0 +1,33 @@
+section.repository-list {
+    margin: 40px;
+
+    h1 {
+        margin-bottom: 16px;
+        color: blue;
+    }
+
+    ul {
+        list-style: none; // tira o pontinho da lista
+    }
+
+    li {
+        & + li { // Será aplicado apenas à li que for sucedida por outra li
+            margin-top: 20px;
+        }
+    }
+
+    p {
+        font-size: 16px;
+        color: black;
+        margin-top: 10px;
+    }
+
+    a {
+        display: inline-block; // permite fazer alterações no display
+        margin-top: 0px;
+        text-decoration: none; // tira linha sublinhada
+        color: #8257e6;
+    }
+
+
+}
