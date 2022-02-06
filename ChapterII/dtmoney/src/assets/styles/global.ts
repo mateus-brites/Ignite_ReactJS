@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
         --background: #f8f2f5;
         --red: #e2e4de;
         --blue: #5429cc;
+        --green: #33CC95;
 
         --blue-light: #6933FF;
 
@@ -14,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
 
         --background: #f8f2f5;
 
-        --snape: #FFFFFF;
+        --shape: #FFFFFF;
     }
     * {
         margin: 0;
