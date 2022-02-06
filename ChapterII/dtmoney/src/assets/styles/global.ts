@@ -36,6 +36,14 @@ export const GlobalStyles = createGlobalStyle`
         background: var()(--background);
         -webkit-font-smoothing: antialiased; // Para as fontes ficarem mais nítidas
     }
+    body, input, textarea, button { // esses elementos por padrão não importam a fonte do html pois tem a sua própria fonte
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+    }
+
+    h1, h2, h3, h4, h5, h6, strong {
+        font-weight: 600;
+    }
 
     button {
         cursor: pointer; // faz com que o botão seja clicavel
