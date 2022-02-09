@@ -1,4 +1,10 @@
 import styled from "styled-components"
+import { darken, transparentize } from 'polished'
+
+interface RadioBoxProps {
+    isActive: boolean;
+    activeColor: 'green' | 'red';
+}
 
 
 export const Container = styled.form`
@@ -44,4 +50,49 @@ export const Container = styled.form`
             filter: brightness(0.9);
         }
     }
+`
+
+export const TransactionTypeContainer = styled.div`
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; //Coloca 1 botão ao lado do outro
+    gap: 0.5rem; // espaçamento entre cada botão
+`
+
+const colors = {
+    green: '#33CC95',
+    red: '#E52E4D',
+}
+
+export const RadioBox = styled.button<RadioBoxProps>` // precisa passar essa interface para que seja entendido a propriedade isActive
+        height: 4rem;
+        border: 1px solid #d7d7d7;
+        border-radius: 0.25rem;
+
+        background: ${
+            (props) => props.isActive 
+            ? transparentize(0.8, colors[props.activeColor]) 
+            : 'transparent'}; // sempre que passamos uma interpolação temos acesso a todas as propriedades do componente
+
+        display: flex;
+        align-items: center; // alinha os itens no centro verticalmente
+        justify-content: center; // alinha os itens no centro horizontalmente
+
+        transition: border-color 0.1s;
+
+        &:hover {
+            border-color: ${darken(0.1, '#d7d7d7')}; // escurece em 10% a cor d7d7d7
+        }
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+
+        span {
+            display: inline-block;
+            margin-left: 1rem;
+            font-size: 1rem;
+            color: var(--text-title);
+        }
 `
