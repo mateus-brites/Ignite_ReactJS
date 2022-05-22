@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { SubscribeButton } from '../coomponents/SubscribeButton';
 import { stripe } from '../services/stripe';
@@ -34,8 +34,10 @@ export default function Home(props: HomeProduct) {
     </>
   )
 }
+// GetStaticProps: salva o resultado do HTML de forma estática e atualiza o resultado a cada intervalo de tempo determinada
+// GetServerSideRender atualiza o HTML a cada requisição
 // tudo que retornarmos de props aqui poderemos utilizar dentro do componente Home compo propriedade
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const price = await stripe.prices.retrieve('price_1L238OIhkTTwHkXI1I4ivRei'); // API ID
   expend: ['product'] // para ter acesso a todas as informações do produto
 
@@ -48,5 +50,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }).format(price.unit_amount / 100)
   }
 
-  return ({ props: { product, } })
+  return {
+    props: {
+      product,
+    },
+    revalidate: 60 * 60 * 24, // 24 horas
+  }
 }
