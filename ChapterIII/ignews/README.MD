@@ -23,7 +23,7 @@ Utilizamos a API <strong>Stripe</strong> para simular as transações e cadastra
 - [Typescript](https://www.typescriptlang.org/)
 - [Stripe](https://stripe.com/en-mx)
 - [SASS](https://sass-lang.com/)
-
+- [Next-Auth](https://next-auth.js.org/)
 
 ---
 
