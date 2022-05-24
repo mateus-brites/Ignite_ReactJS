@@ -21,9 +21,10 @@ Utilizamos a API <strong>Stripe</strong> para simular as transações e cadastra
 - [Next](https://nextjs.org/)
 - [React.Js](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
-- [Stripe](https://stripe.com/en-mx)
+- [Stripe](https://stripe.com/en-mx) (API de pagamento)
 - [SASS](https://sass-lang.com/)
-- [Next-Auth](https://next-auth.js.org/)
+- [Next-Auth](https://next-auth.js.org/) (API de autenticação)
+- [FaunaDB](https://fauna.com/) (Banco de dados serverless)
 
 ---
 
