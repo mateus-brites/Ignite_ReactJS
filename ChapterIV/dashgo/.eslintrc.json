@@ -1,0 +1,11 @@
+{
+  "extends": "next/core-web-vitals",
+  "space-in-brackets": ["error", "never", {
+    "singleValue": true,
+    "objectsInArrays": true,
+    "arraysInArrays": true,
+    "arraysInObjects": true,
+    "objectsInObjects": true,
+    "propertyName": true
+  }]
+}
