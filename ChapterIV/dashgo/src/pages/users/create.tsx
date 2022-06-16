@@ -31,7 +31,7 @@ export default function CreateUser() {
                             <Button colorScheme='pink'>Salvar</Button>
                         </HStack>
                     </Flex>
-                </Box>      
+                </Box>
             </Flex>
         </Box>
     )
