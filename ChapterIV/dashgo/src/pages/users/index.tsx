@@ -1,12 +1,21 @@
-import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Flex, Heading, Icon, Spinner, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import Link from "next/link";
 import { useEffect } from "react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
+import { useQuery } from 'react-query'
+
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 
 export default function UserList() {
+    const { data, isLoading, error } = useQuery('users', async () => { // Chave que será armaznada no cache
+        const response = await fetch('http://localhost:3000/api/users')
+        const data = await response.json()
+
+        return data
+    }) 
+
     useEffect(() => {
         fetch('http://localhost:3000/api/users')
         .then(response => response.json())
@@ -33,48 +42,57 @@ export default function UserList() {
                         </Button>
                         </Link>
                     </Flex>
-
-                    <Table colorScheme='whiteAlpha'>
-                    <Thead>
-                        <Tr>
-                            <Th px='6' color='gray.300' width='8'>
-                                <Checkbox colorScheme='pink' />
-                            </Th>
-                            <Th>Usuários</Th>
-                            <Th>Data de cadastro</Th>
-                            <Th width='8'></Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        <Tr>
-                            <Td px='6'>
-                                <Checkbox colorScheme='pink' />
-                            </Td>
-                            <Td>
-                                <Box>
-                                    <Text fontWeight='bold'>Mateus Brites</Text>
-                                    <Text fontSize='sm' color='gray.300'>mateusmmo15@gmail.com</Text>
-                                </Box>
-                            </Td>
-                            <Td>14 de jun, 2022</Td>
-                            <Td>
-                            <Button 
-                            as='a' 
-                            size='sm' 
-                            fontSize='sm'
-                            colorScheme='purple'
-                            leftIcon={<Icon as={RiPencilLine} />}
-                            >
-                                Editar
-                            </Button>
-                            </Td>
-                        </Tr>
-                    </Tbody>
+                    {isLoading ? (
+                        <Flex justify="center">
+                            <Spinner />
+                        </Flex>
+                    ) : error ? (
+                        <Flex justify="center">
+                            <Text>Falha ao obter dados dos usuários</Text>
+                        </Flex>
+                    ) : (
+                        <>
+                        <Table colorScheme='whiteAlpha'>
+                        <Thead>
+                            <Tr>
+                                <Th px='6' color='gray.300' width='8'>
+                                    <Checkbox colorScheme='pink' />
+                                </Th>
+                                <Th>Usuários</Th>
+                                <Th>Data de cadastro</Th>
+                                <Th width='8'></Th>
+                            </Tr>
+                        </Thead>
+                        <Tbody>
+                            <Tr>
+                                <Td px='6'>
+                                    <Checkbox colorScheme='pink' />
+                                </Td>
+                                <Td>
+                                    <Box>
+                                        <Text fontWeight='bold'>Mateus Brites</Text>
+                                        <Text fontSize='sm' color='gray.300'>mateusmmo15@gmail.com</Text>
+                                    </Box>
+                                </Td>
+                                <Td>14 de jun, 2022</Td>
+                                <Td>
+                                <Button 
+                                as='a' 
+                                size='sm' 
+                                fontSize='sm'
+                                colorScheme='purple'
+                                leftIcon={<Icon as={RiPencilLine} />}
+                                >
+                                    Editar
+                                </Button>
+                                </Td>
+                            </Tr>
+                        </Tbody>
                 </Table>  
                 <Pagination />
-                </Box>
-
-                              
+                </>
+                    )}
+                </Box>             
             </Flex>
         </Box>
     )
