@@ -5,14 +5,14 @@ import { FieldError } from 'react-hook-form'
 interface InputProps extends ChakraInputProps {
     name: string;
     label?: string; 
-    errors: FieldError;
+    errors?: FieldError;
 }
 
 const  InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ name, label, errors, ...rest }, ref) => {
     return(
         <FormControl isInvalid={!!errors}> {/* Define espaçamento entre os elementos */}
             { !!label && <FormLabel htmlFor={name}>{label}</FormLabel>}
-            <ChakraInput 
+            <ChakraInput
               name={name} 
               id={name}
               focusBorderColor="pink.500"
@@ -25,7 +25,7 @@ const  InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ na
               ref={ref}
               {...rest}
             />
-            {!!errors && <FormErrorMessage>{errors.message}</FormErrorMessage>}
+            {!!errors && <FormErrorMessage >{errors.message}</FormErrorMessage>}
           </FormControl>
     )
 }
