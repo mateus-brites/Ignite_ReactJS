@@ -14,9 +14,11 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@hookform/resolvers": "^2.9.1",
+    "@types/faker": "^6.6.9",
     "@types/node": "^17.0.41",
     "@types/react": "^18.0.12",
     "apexcharts": "^3.35.3",
+    "faker": "^6.6.6",
     "framer-motion": "^6.3.11",
     "next": "12.1.6",
     "react": "18.1.0",
@@ -28,6 +30,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
     "eslint": "^8.17.0",
     "eslint-config-next": "12.1.6",
     "miragejs": "^0.1.45"
