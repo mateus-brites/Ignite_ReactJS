@@ -64,29 +64,33 @@ export default function UserList() {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            <Tr>
-                                <Td px='6'>
-                                    <Checkbox colorScheme='pink' />
-                                </Td>
-                                <Td>
-                                    <Box>
-                                        <Text fontWeight='bold'>Mateus Brites</Text>
-                                        <Text fontSize='sm' color='gray.300'>mateusmmo15@gmail.com</Text>
-                                    </Box>
-                                </Td>
-                                <Td>14 de jun, 2022</Td>
-                                <Td>
-                                <Button 
-                                as='a' 
-                                size='sm' 
-                                fontSize='sm'
-                                colorScheme='purple'
-                                leftIcon={<Icon as={RiPencilLine} />}
-                                >
-                                    Editar
-                                </Button>
-                                </Td>
-                            </Tr>
+                            {data.users.map(user => {
+                                return (
+                                    <Tr>
+                                        <Td px='6'>
+                                            <Checkbox colorScheme='pink' />
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Text fontWeight='bold'>{user.name}</Text>
+                                                <Text fontSize='sm' color='gray.300'>{user.email}</Text>
+                                            </Box>
+                                        </Td>
+                                        <Td>{String(new Date(user.created_at).toLocaleDateString('pt-br'))}</Td>
+                                        <Td>
+                                        <Button 
+                                        as='a' 
+                                        size='sm' 
+                                        fontSize='sm'
+                                        colorScheme='purple'
+                                        leftIcon={<Icon as={RiPencilLine} />}
+                                        >
+                                            Editar
+                                        </Button>
+                                        </Td>
+                                    </Tr>
+                                )
+                            })}
                         </Tbody>
                 </Table>  
                 <Pagination />
