@@ -1,6 +1,7 @@
 import {AppProps} from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '../styles/theme'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { SidebarDrawerCProvider } from '../contexts/SidebarDrawerContext'
 import { makeServer } from '../services/mirage'
 import { QueryClient, QueryClientProvider } from 'react-query' // Precisamos usar ele para poder usar a querys
@@ -20,6 +21,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </SidebarDrawerCProvider>
       </ChakraProvider>
+      {/* Serve para debugar o react-query nos mostrandos as queries feitas, em cache... */}
+      <ReactQueryDevtools />
     </QueryClientProvider>
   )
 }

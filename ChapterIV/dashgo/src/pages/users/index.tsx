@@ -14,6 +14,8 @@ export default function UserList() {
         const data = await response.json()
 
         return data
+    }, {
+        staleTime: 1000 * 5 // Durante 5 segundos os dados serão considerados atualizados
     }) 
 
     useEffect(() => {
